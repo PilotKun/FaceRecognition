@@ -1,14 +1,14 @@
 
+#* This file contains the utility functions for face recognition.
+
 import face_recognition
 import cv2
 import numpy as np
 
 def get_face_encoding(image_path):
-    """
-    Load an image and return the face encoding.
+    """Load an image and return the face encoding.
     :param image_path: path to the image
-    :return: face encoding
-    """
+    :return: face encoding"""
     image = face_recognition.load_image_file(image_path)
     face_encodings = face_recognition.face_encodings(image)
     if len(face_encodings) > 0:
@@ -16,10 +16,8 @@ def get_face_encoding(image_path):
     return None
 
 def capture_and_encode_face():
-    """
-    Capture a face from the webcam and return the encoding.
-    :return: face encoding
-    """
+    """Capture a face from the webcam and return the encoding.
+    :return: face encoding"""
     video_capture = cv2.VideoCapture(0)
 
     while True:
