@@ -4,3 +4,4 @@ venv/
 .vscode/
 .mds/
 Project/__pycache__/
+Project/attendance.db
