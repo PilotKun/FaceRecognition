@@ -2,3 +2,5 @@ Attendence.csv
 ImagesAttendence/
 venv/
 .vscode/
+.mds/
+Project/__pycache__/

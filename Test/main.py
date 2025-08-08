@@ -33,16 +33,22 @@ def findEncodings(images):
 
 
 def markAttendence(name):
-    with open("Attendence.csv", "r+") as f:
+    filename = "Attendence.csv"
+    # Check if file exists, if not, create with header
+    if not os.path.exists(filename):
+        with open(filename, "w") as f:
+            f.write("Name,Time\n")
+    with open(filename, "r+") as f:
         myDataList = f.readlines()
         nameList = []
-        for line in myDataList:
-            entry = line.split(",")
-            nameList.append(entry[0])
+        for line in myDataList[1:]:  # skip header
+            entry = line.strip().split(",")
+            if entry and entry[0]:
+                nameList.append(entry[0])
         if name not in nameList:
             now = datetime.now()
             dtString = now.strftime("%H:%M:%S")
-            f.writelines(f"\n{name},{dtString}")
+            f.write(f"{name},{dtString}\n")
 
 
 encodeListKnown = findEncodings(images)
